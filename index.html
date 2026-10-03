@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Gabriel Silva Floriano | Android and Java developer</title>
+    <meta name="description"
+        content="Portfolio of Gabriel Silva Floriano: Android, Kotlin and Java projects, including Suporte60, an app for elderly people.">
+    <meta name="theme-color" content="#1e1b4b">
+    <meta property="og:title" content="Gabriel Silva Floriano | Android and Java developer">
+    <meta property="og:description" content="Android, Kotlin and Java projects. Learning and growing as a developer.">
+    <meta property="og:type" content="website">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231e1b4b'/%3E%3Ccircle cx='50' cy='50' r='24' fill='%23f59e0b'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            color-scheme: light dark;
+
+            --indigo: #1e1b4b;
+            --papel: #fafaf9;
+            --tinta: #1c1917;
+            --sol: #f59e0b;
+            --lavanda: #c7d2fe;
+            --menta: #a7f3d0;
+
+            --bg: var(--papel);
+            --fg: var(--tinta);
+            --borda: var(--tinta);
+            --sombra: var(--tinta);
+            --card-info: var(--papel);
+            --foco: #4338ca;
+
+            --desloc: 8px;
+
+            --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+            --texto: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #151326;
+                --fg: #f5f5f4;
+                --borda: var(--sol);
+                --sombra: var(--sol);
+                --card-info: #1e1b4b;
+                --foco: var(--sol);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--texto);
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--foco);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .hero a:focus-visible,
+        .contact a:focus-visible {
+            outline-color: var(--sol);
+        }
+
+        .skip {
+            position: absolute;
+            left: 16px;
+            top: -64px;
+            background: var(--sol);
+            color: var(--tinta);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .skip:focus {
+            top: 12px;
+            outline: 3px solid var(--tinta);
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--indigo);
+            background-image: radial-gradient(rgba(250, 250, 249, .13) 1.5px, transparent 1.5px);
+            background-size: 26px 26px;
+            color: var(--papel);
+            padding: calc(28px + env(safe-area-inset-top)) 0 72px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: clamp(180px, 34vw, 420px);
+            aspect-ratio: 1;
+            right: -6%;
+            bottom: -12%;
+            border-radius: 50%;
+            background: var(--sol);
+            opacity: .92;
+        }
+
+        .hero .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-bottom: 96px;
+        }
+
+        nav .logo {
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: 1.25rem;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 0;
+            display: inline-block;
+        }
+
+        nav ul a:hover {
+            text-decoration: underline;
+            text-decoration-color: var(--sol);
+            text-underline-offset: 6px;
+            text-decoration-thickness: 3px;
+        }
+
+        h1 {
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: clamp(2.6rem, 9vw, 6.6rem);
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+            max-width: 14ch;
+            animation: entrada .8s cubic-bezier(.2, .8, .2, 1) both;
+        }
+
+        @keyframes entrada {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .hero p {
+            margin-top: 28px;
+            max-width: 46ch;
+            font-size: 1.15rem;
+        }
+
+        .stack {
+            background: var(--tinta);
+            color: var(--papel);
+            padding: 18px 0;
+        }
+
+        .stack ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 28px;
+            font-family: var(--display);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 96px 0;
+        }
+
+        h2 {
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: clamp(1.9rem, 5vw, 3rem);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .line {
+            --cor-card: var(--sol);
+            background: var(--cor-card);
+            color: var(--tinta);
+            border: 2px solid var(--tinta);
+            border-radius: 28px;
+            padding: 32px;
+            box-shadow: calc(var(--desloc) - 2px) calc(var(--desloc) - 2px) 0 var(--sombra);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .line:nth-child(2) {
+            --cor-card: var(--lavanda);
+        }
+
+        .line:nth-child(3) {
+            --cor-card: var(--menta);
+        }
+
+        .line h3 {
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.1;
+        }
+
+        .line p {
+            max-width: 65ch;
+            font-size: 1.05rem;
+        }
+
+        .tags {
+            margin-top: auto;
+            padding: 8px 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .tags li {
+            border: 2px solid var(--tinta);
+            border-radius: 999px;
+            padding: 4px 14px;
+            font-size: .9rem;
+            font-weight: 500;
+        }
+
+        .info {
+            background-image: radial-gradient(color-mix(in srgb, var(--fg) 14%, transparent) 1.5px, transparent 1.5px);
+            background-size: 26px 26px;
+        }
+
+        .info-card {
+            background: var(--card-info);
+            border: 2px solid var(--borda);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--desloc) var(--desloc) 0 var(--sombra);
+        }
+
+        .info p {
+            max-width: 62ch;
+            font-size: 1.15rem;
+        }
+
+        .info p+p {
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .contact {
+            background: var(--indigo);
+            color: var(--papel);
+        }
+
+        .contact h2 {
+            max-width: 16ch;
+        }
+
+        .contact a.mail {
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: clamp(1.15rem, 4.5vw, 2.6rem);
+            text-decoration-color: var(--sol);
+            text-decoration-thickness: 4px;
+            text-underline-offset: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .contact a.mail:hover {
+            color: var(--sol);
+        }
+
+        footer {
+            background: var(--tinta);
+            color: var(--papel);
+            padding: 22px 0 calc(22px + env(safe-area-inset-bottom));
+            font-size: .9rem;
+        }
+
+        @media (min-width: 760px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .line:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .wrap {
+                max-width: 1180px;
+                padding: 0 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --desloc: 6px;
+            }
+
+            nav {
+                margin-bottom: 56px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .hero {
+                padding-bottom: 56px;
+            }
+
+            section {
+                padding: 56px 0;
+            }
+
+            h2 {
+                margin-bottom: 28px;
+            }
+
+            .line,
+            .info-card {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .wrap {
+                padding: 0 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            h1 {
+                animation: none;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a class="skip" href="#projects">Skip to content</a>
+
+    <header class="hero">
+        <div class="wrap">
+            <nav aria-label="Main">
+                <a class="logo" href="#">Gabriel Silva Floriano</a>
+                <ul>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#info">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <h1>Welcome!</h1>
+            <p>Learning and growing as a developer</p>
+        </div>
+    </header>
+
+    <div class="stack">
+        <div class="wrap">
+            <ul aria-label="Technologies I work with">
+                <li>Kotlin</li>
+                <li>Android</li>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>HTML &amp; CSS</li>
+                <li>Git</li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="projects">
+            <div class="wrap">
+                <h2>Projects</h2>
+
+                <div class="grid">
+                    <article class="line">
+                        <h3>Suporte60+</h3>
+                        <p>Support Android app for elderly people. It brings chat between client and attendant, a
+                            virtual assistant built with the Gemini API (first contact), a human attendant and phone
+                            calls.</p>
+                        <ul class="tags">
+                            <li>Android</li>
+                            <li>Gemini</li>
+                            <li>Adaptive screens</li>
+                        </ul>
+                    </article>
+
+                    <article class="line">
+                        <h3>Train Simulator</h3>
+                        <p>Simple simulator for practicing Java with IO classes.</p>
+                        <ul class="tags">
+                            <li>Terminal</li>
+                            <li>Java</li>
+                            <li>IO Classes</li>
+                        </ul>
+                    </article>
+
+                    <article class="line">
+                        <h3>Auto-Git</h3>
+                        <p>Git commands in the terminal that automate version control tasks, using the fuzzy finder to
+                            navigate through system files.</p>
+                        <ul class="tags">
+                            <li>Files Organization</li>
+                            <li>Shell Scripts</li>
+                            <li>Fuzzy Finder</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="info" id="info">
+            <div class="wrap">
+                <div class="info-card">
+                    <h2>About me</h2>
+                    <p>I like to focus on my studies and practice new concepts in Java and Android development. I am
+                        passionate about creating applications that make a difference in people's lives.</p>
+                    <p>Let's start a new journey together?</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="wrap">
+                <h2>What’s your challenge today? --I solve!</h2>
+                <a class="mail" href="mailto:gabrielsgf12@email.com">gabrielsgf12@email.com</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">© 2026 Gabriel Silva Floriano. Built with HTML, CSS and dedication. Hosted on GitHub Pages.
+        </div>
+    </footer>
+
+</body>
+
+</html>
